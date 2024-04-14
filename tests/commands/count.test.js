@@ -1,4 +1,4 @@
-const { count } = require('../../src/utils/count');
+const { countElements } = require('../../src/commands/count');
 const { data } = require('../fixtures/data')
 
 const EXPECTED_COUNTERS = [
@@ -11,16 +11,16 @@ const EXPECTED_COUNTERS = [
 const NAME_COUNTER_REGEX = /(.+)\s\[(\d+)\]/;
 
 // Test de la fonction de filtrage
-describe('utils count', () => {
+describe('count command', () => {
   
   it('should return all countries', () => {
-    const countResult = count(data);
+    const countResult = countElements(data);
 
     expect(countResult.length).toBe(EXPECTED_COUNTERS.length);
   });
   
   it('should generate correct country name counter', () => {
-    const countResult = count(data);
+    const countResult = countElements(data);
 
     countResult.forEach((country, idx) => {
       const matchs = country.name.match(NAME_COUNTER_REGEX);
@@ -31,7 +31,7 @@ describe('utils count', () => {
   });
 
   it('should generate correct people name counter', () => {
-    const countResult = count(data);
+    const countResult = countElements(data);
 
     countResult.forEach((country, countryIdx) => {
       country.people.forEach((person, peopleIdx) => {
@@ -44,7 +44,7 @@ describe('utils count', () => {
   });
 
   it('shoud preserve order', () => {
-    const countResult = count(data);
+    const countResult = countElements(data);
 
     countResult.forEach((country, countryIdx) => {
       const matchs = country.name.match(NAME_COUNTER_REGEX);
@@ -62,7 +62,7 @@ describe('utils count', () => {
   })
 
   it('should handle empty data', () => {
-    const countResult = count([]);
+    const countResult = countElements([]);
     expect(countResult.length).toBe(0);
   });
 

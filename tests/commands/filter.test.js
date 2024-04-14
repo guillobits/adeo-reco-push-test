@@ -1,19 +1,19 @@
-const { filter } = require('../../src/utils/filter');
+const { filterElements } = require('../../src/commands/filter');
 const { data } = require('../fixtures/data')
 
 // Test de la fonction de filtrage
-describe('utils filter', () => {
+describe('filter command', () => {
 
   it('should return all countries when no pattern', () => {
     const pattern = '';
-    const countResult = filter(data, pattern);
+    const countResult = filterElements(data, pattern);
 
     expect(countResult.length).toBe(data.length);
   });
 
   it('shoud preserve order', () => {
     const pattern = 'ry'
-    const filterResult = filter(data, pattern);
+    const filterResult = filterElements(data, pattern);
 
     // Handle countries
     filterResult.forEach((country, countryIdx) => {
@@ -38,7 +38,7 @@ describe('utils filter', () => {
 
   it('shoud return only animals with pattern', () => {
     const pattern = 'ry'
-    const filterResult = filter(data, pattern);
+    const filterResult = filterElements(data, pattern);
 
     // Handle countries
     filterResult.forEach((country) => {
@@ -52,7 +52,7 @@ describe('utils filter', () => {
 
   it('should return empty for a non-existant pattern', () => {
     const pattern = 'welcome-adeo'
-    const filterResult = filter(data, pattern);
+    const filterResult = filterElements(data, pattern);
 
     expect(filterResult).toBeInstanceOf(Array);
     expect(filterResult).toHaveLength(0);
@@ -60,7 +60,7 @@ describe('utils filter', () => {
 
   it('shoud return only not empty array', () => {
     const pattern = 'ry'
-    const filterResult = filter(data, pattern);
+    const filterResult = filterElements(data, pattern);
 
     // Handle countries
     filterResult.forEach((country) => {
@@ -75,7 +75,7 @@ describe('utils filter', () => {
   });
 
   it('should handle empty data', () => {
-    const filterResult = filter([], '');
+    const filterResult = filterElements([], '');
     expect(filterResult.length).toBe(0);
   });
 
