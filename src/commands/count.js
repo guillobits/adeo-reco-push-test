@@ -1,8 +1,10 @@
 const { data } = require('../../data');
 
 const countElements = (data) => {
+  // Count people in country
   return data.reduce((formattedCountries, country) => {
     
+    // Count animals in people
     const formattedPeople = country.people.reduce((formattedPeople, person) => {
       formattedPeople.push({
         ...person,
