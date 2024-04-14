@@ -1,18 +1,21 @@
 const { data } = require('../../data');
 
-const paramRequired = () => {
+const paramRequiredError = () => {
   console.error('Please provide a pattern to --filter command\n');
   console.error('Usage: node app.js --filter=<pattern>');
 }
 
+/**
+ * This function filters elements based on a given pattern.
+ * 
+ * @param { Array } data - An array of objects representing countries, people, and animals.
+ * @param { String } pattern - The pattern to filter by.
+ * @returns { Array } - A filtered array containing countries, people, and animals based on the provided pattern.
+ */
 const filterElements = (data, pattern) => {
-  // Filter not empty countries
   return data.reduce((filteredCountries, country) => {
-
-    // Filter not empty people
     const filteredPeople = country.people.reduce((filteredPeople, person) => {
 
-      // Filter animal with given pattern
       const filteredAnimals = person.animals.filter(animal =>
         animal.name.toLowerCase().includes(pattern.toLowerCase())
       );
@@ -33,7 +36,7 @@ const filterElements = (data, pattern) => {
 
 const filterCommand = (args) => {
   if (args.length <= 0) {
-    paramRequired();
+    paramRequiredError();
   }
   else {
     const filteredElements = filterElements(data, args[0]);

@@ -15,7 +15,7 @@ describe('count command', () => {
   
   it('should return all countries', () => {
     const countResult = countElements(data);
-
+ 
     expect(countResult.length).toBe(EXPECTED_COUNTERS.length);
   });
   
@@ -25,7 +25,7 @@ describe('count command', () => {
     countResult.forEach((country, idx) => {
       const matchs = country.name.match(NAME_COUNTER_REGEX);
       const countryPeopleCounter = parseInt(matchs[2]);
-      const expectedCounter = EXPECTED_COUNTERS[idx].length
+      const expectedCounter = EXPECTED_COUNTERS[idx].length;
       expect(countryPeopleCounter).toBe(expectedCounter);
     })
   });
@@ -49,7 +49,7 @@ describe('count command', () => {
     countResult.forEach((country, countryIdx) => {
       const matchs = country.name.match(NAME_COUNTER_REGEX);
       const countryName = matchs[1];
-      const expectedCountryName = data[countryIdx].name
+      const expectedCountryName = data[countryIdx].name;
       expect(countryName).toBe(expectedCountryName);
 
       country.people.forEach((person, personIdx) => {

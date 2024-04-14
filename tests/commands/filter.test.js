@@ -12,7 +12,7 @@ describe('filter command', () => {
   });
 
   it('shoud preserve order', () => {
-    const pattern = 'ry'
+    const pattern = 'ry';
     const filterResult = filterElements(data, pattern);
 
     // Handle countries

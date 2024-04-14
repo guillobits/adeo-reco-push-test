@@ -1,10 +1,13 @@
 const { data } = require('../../data');
 
+/**
+ * Formats the number of people and animals within each country in the data
+ * @param Array data - An array of objects representing countries, people, and animals.
+ * @returns {Array} - A formatted array with updated counts for people and animals.
+ */
 const countElements = (data) => {
-  // Count people in country
   return data.reduce((formattedCountries, country) => {
     
-    // Count animals in people
     const formattedPeople = country.people.reduce((formattedPeople, person) => {
       formattedPeople.push({
         ...person,
